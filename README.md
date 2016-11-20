@@ -1,14 +1,25 @@
 # coding-show-frontend
 
-> Coding-Show Frontend Part
+> Coding-Show 前端部分
+ 
+## 截图  
+npm run dev 截图  
+![基本View](./doc/screenshots/baseView.png)  
+显示模板文件结构  
+![文件结构](./doc/screenshots/fileStuc.png)   
+拆分页面部分，创建组建、布局、页面，进行拼接  
 
-## Build Setup
+## 待解决问题  
+
+已引入bootstrap.min.css, 引入bootstrap.min.js 出错！
+
+## 编译安装
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 启动服务在 localhost:8080
 npm run dev
 
 # build for production with minification
