@@ -1,6 +1,6 @@
 <template>
   <main-layout>
-    <p>首屏页面</p>
+    <p>正在运营的项目</p>
   </main-layout>
 </template>
 

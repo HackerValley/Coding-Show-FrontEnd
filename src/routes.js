@@ -4,9 +4,11 @@
 export default {
   '/': 'Home',
   '/about': 'About',
-  '/online-pj': 'Online',
-  '/user/pro': 'Pro-User',
-  '/user/act/add': 'Add-Proj',
-  '/user/list/pj-pub': 'Proj-Public',
-  '/user/list/pj-dev': 'Proj-Dev'
+  '/onlinepj': 'OnlinePj',
+  '/user/pro': 'user/pro',
+  '/user/act/add': 'user/act/add',
+  '/user/act/reg': 'user/act/reg',
+  '/user/act/login': 'user/act/login',
+  '/user/list/pub': 'user/list/proj-pub',
+  '/user/list/dev': 'user/list/proj-dev'
 }
