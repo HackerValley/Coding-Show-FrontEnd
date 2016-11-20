@@ -2,7 +2,6 @@
     <div class="main">
         <header-component/>
         <div>this is template body</div>
-
         <slot></slot>
         <footer-component/>
     </div>
