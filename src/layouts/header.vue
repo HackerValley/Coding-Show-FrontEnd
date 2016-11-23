@@ -18,10 +18,10 @@
   </nav>
 </template>
 <style>
+/*Header.vue*/
   .navbar ul{float:left;}
   .navbar ul li{float:left;}
   .navbar ul.navbar-right{float:right;}
-
 </style>
 <script>
   import LinkNav from '../components/linkNav.vue'

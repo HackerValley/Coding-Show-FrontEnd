@@ -1,4 +1,5 @@
 var path = require('path')
+var glob = require('glob')
 var config = require('../config')
 var utils = require('./utils')
 var webpack = require('webpack')
@@ -98,5 +99,45 @@ if (config.build.productionGzip) {
     })
   )
 }
+
+function getEntry(globPath) {
+  var entries = {},
+    basename, tmp, pathname;
+
+  glob.sync(globPath).forEach(function (entry) {
+    basename = path.basename(entry, path.extname(entry));
+    tmp = entry.split('/').splice(-3);
+    pathname = tmp.splice(0, 1) + '/' + basename; // 正确输出js和html的路径
+    entries[pathname] = entry;
+  });
+  console.log(entries);
+  return entries;
+}
+
+var pages = getEntry('./src/pages/**/*.html');
+
+for (var pathname in pages) {
+
+
+  // 配置生成的html文件，定义路径等
+  var conf = {
+    filename: pathname + '.html',
+    template: pages[pathname],   // 模板路径
+    inject: true,              // js插入位置
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+    },
+    chunks: [pathname, "vendor", "manifest"],
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
+  };
+
+  webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
+}
+
 
 module.exports = webpackConfig

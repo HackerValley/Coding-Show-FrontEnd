@@ -10,10 +10,12 @@ var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
 var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
+var glob = require('glob')
+var entries = getEntryFunc('./src/pages/**/*.js'); // 获得入口js函数
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  entry: entries({
+    app:'./src/main.js'
+  }),
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
@@ -91,4 +93,18 @@ module.exports = {
       })
     ]
   }
+}
+function getEntryFunc(globPath) {
+  return function(init){
+    init = init||{}
+    var basename, pathname;
+
+    glob.sync(globPath).forEach(function (entry) {
+      basename = path.basename(entry, path.extname(entry))
+      pathname = entry.split('/').splice(-3).splice(0,1) + '/' + basename
+      init[pathname] = entry;
+    })
+    return init;
+  }
+
 }

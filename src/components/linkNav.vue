@@ -8,6 +8,7 @@
   </a></li>
 </template>
 <style>
+  /*linkNav.vue*/
 </style>
 <script>
     import routes from '../routes'
