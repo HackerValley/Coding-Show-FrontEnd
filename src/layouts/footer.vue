@@ -5,3 +5,6 @@
     </div>
   </div>
 </template>
+<style>
+  /*footer.vue*/
+</style>
