@@ -8,7 +8,7 @@ const app = new Vue({
   },
   computed: {
     ViewComponent () {
-      return require('./pages/404.vue')
+      return require('./pages/Home.vue')
     }
   },
   render (h) {

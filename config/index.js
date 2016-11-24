@@ -23,17 +23,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://rap.taobao.org/mockjs/10031',
+        target: 'http://rap.taobao.org/mockjs/10031/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
-        }
-      },
-      '/list': {
-        target: 'http://rap.taobao.org/mockjs/10576',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/list': ''
         }
       }
     },
