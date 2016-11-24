@@ -8,11 +8,11 @@
           <link-nav href='/user/pro'>专业用户入口</link-nav>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <link-nav href='/user/act/add'>添加项目</link-nav>
-          <link-nav href='/user/list/pub'>发布的项目</link-nav>
-          <link-nav href='/user/list/dev'>开发的项目</link-nav>
-          <link-nav href='/user/act/reg'>注册</link-nav>
-          <link-nav href='/user/act/login'>登入</link-nav>
+          <page-nav href='/pages/AddProj.html'>添加项目</page-nav>
+          <page-nav href='/user/list/pub'>发布的项目</page-nav>
+          <page-nav href='/user/list/dev'>开发的项目</page-nav>
+          <page-nav href='/user/act/reg'>注册</page-nav>
+          <page-nav href='/user/act/login'>登入</page-nav>
         </ul>
     </div><!-- /.container-fluid -->
   </nav>
@@ -25,9 +25,11 @@
 </style>
 <script>
   import LinkNav from '../components/linkNav.vue'
+  import PageNav from '../components/pageNav.vue'
   export default{
     components: {
-      LinkNav
+      LinkNav,
+      PageNav
     }
   }
 </script>
