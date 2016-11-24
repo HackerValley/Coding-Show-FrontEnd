@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <header-component/>
-        <div>this is template body</div>
-        <other-component/>
-    </div>
+<div>
+  <header-component/>
+  <h1>添加项目</h1>
+  <other-component/>
+</div>
 </template>
 <style>
 /*add.vue*/

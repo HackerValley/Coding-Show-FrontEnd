@@ -6,6 +6,7 @@ js文件和css文件分开加载，可以通过配置chrunks完成
 解释的比较清楚的一篇[文章](http://blog.csdn.net/ychyssss/article/details/52494785)  
 
 参考链接：
+- [参考 repo](https://github.com/jarvan4dev/vue-multi-page)
 - [webpack 官方文档 多页面优化](https://webpack.github.io/docs/optimization.html#multi-page-app)  
 - [multiple-commons-chunks](https://github.com/webpack/webpack/tree/master/examples/multiple-commons-chunks)  
 - [multiple-entry-points](https://github.com/webpack/webpack/tree/master/examples/multiple-entry-points)  
