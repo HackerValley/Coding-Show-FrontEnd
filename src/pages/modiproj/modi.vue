@@ -67,9 +67,12 @@
             </div>
           </div>
           <div class="from-group form-group-lg text-right">
+            <div class="well">
+              {{ test }}
+            </div>
             <hr>
-            <button type="submit" class="btn btn-primary btn-lg" v-on:click='add'>提交</button>
-            <a class="btn btn-lg btn-info" v-on:click='request'>点击更新内容显示</a>
+            <button type="submit" class="btn btn-primary btn-lg" v-on:click='add'>新增</button>
+            <a class="btn btn-lg btn-info" v-on:click='request'>修改</a>
           </div>
         </form>
       </div>
@@ -91,61 +94,94 @@
     .proj div{float:left;margin:10px;border:thin solid red ;width:100px ;height:100px;text-align:center}
 </style>
 <script>
-    import axios from 'axios'
-    import HeaderComponent from '../../components/header.vue'
-    import OtherComponent from '../../components/other.vue'
-    require('../../../node_modules/bootstrap/dist/css/bootstrap.min.css')
-    export default{
-      beforeMount () {
-        // this.request()
+import axios from 'axios'
+import HeaderComponent from '../../components/header.vue'
+import OtherComponent from '../../components/other.vue'
+require('../../../node_modules/bootstrap/dist/css/bootstrap.min.css')
+
+export default{
+  beforeMount () {
+    // this.request()
+  },
+  data () {
+    return {
+      data: {
+        'developer_count': 10,
+        'description': '预设1',
+        'details': [
+          'pre_string1',
+          'pre_string2'
+        ],
+        'project_link': '预设2',
+        'imagePath': [
+          'pre_string3',
+          'pre_string4'
+        ],
+        'dev_projects': {},
+        'project_name': '预设3'
       },
-      data () {
-        return {
-          data: {
-            'developer_count': 10,
-            'description': '预设1',
-            'details': [
-              'pre_string1',
-              'pre_string2'
-            ],
-            'project_link': '预设2',
-            'imagePath': [
-              'pre_string3',
-              'pre_string4'
-            ],
-            'dev_projects': {},
-            'project_name': '预设3'
-          },
-          test: '---',
-          msg: '预留44',
-          status: 2323
-        }
+      test: '---',
+      msg: '预留44',
+      status: 2323
+    }
+  },
+  computed: {
+    details_all: {
+      set: function (val) {
+        this.data.details = val.split('\n')
       },
-      computed: {
-        details_all: function () {
-          return this.data.details.join('\n')
-        }
-      },
-      components: {
-        'other-component': OtherComponent,
-        HeaderComponent
-      },
-      methods: {
-        add (event) {
-          event.preventDefault()
-        },
-        request (event) {
-          if (event) {
-            event.preventDefault()
-          }
-          this.test = 'asd'
-          var _this = this
-          axios.get('/api/projects/2').then(function (rep) {
-            _this.data = rep.data.data
-            _this.msg = rep.data.msg
-            _this.status = rep.data.status
-          })
-        }
+      get: function () {
+        return this.data.details.join('\n')
       }
     }
+  },
+  components: {
+    'other-component': OtherComponent,
+    HeaderComponent
+  },
+  methods: {
+    add (event) {
+      event.preventDefault()
+      this.test = {
+        description: this.data.description,
+        details: this.data.details,
+        imagePath: this.data.imagePath,
+        project_link: this.data.project_link,
+        project_name: this.data.project_name
+      }
+      var _this = this
+      axios.post('/api/projects', {
+        description: this.data.description,
+        details: this.data.details,
+        imagePath: this.data.imagePath,
+        project_link: this.data.project_link,
+        project_name: this.data.project_name
+      }).then(function (rep) {
+        _this.test = rep.data
+        // _this.data = rep.data.data
+        // _this.msg = rep.data.msg
+        // _this.status = rep.data.status
+      })
+    },
+    request (event) {
+      if (event) {
+        event.preventDefault()
+      }
+      this.test = 'Requested'
+      var _this = this
+      axios.post('/api/projects/3', {
+        description: this.data.description,
+        details: this.data.details,
+        imagePath: this.data.imagePath,
+        project_link: this.data.project_link,
+        project_name: this.data.project_name
+      }).then(function (rep) {
+        _this.test = rep.data
+        // _this.data = rep.data.data
+        // _this.msg = rep.data.msg
+        // _this.status = rep.data.status
+      })
+    }
+  }
+}
 </script>
