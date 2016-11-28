@@ -17,6 +17,11 @@
           ...
           ...
 ``` 
+
+## 多页面路由策略
+单页面应用，通过路由相互之间传递参数  
+多页面，同样通过路由？
+
 ## 截图  
 npm run dev 截图  
 ![基本View](./doc/screenshots/baseView.png)  
