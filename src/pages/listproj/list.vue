@@ -10,7 +10,10 @@
         <div class="col-xs-6 col-sm-4 col-lg-3 items" >
           <h4>原型名称</h4>
           <p>原型的介绍</p>
-
+          <div class="well">
+            {{ raw }}
+          </div>
+          <a v-on:click='request'>拉取</a>
         </div>
       </div>
     </div>
@@ -40,9 +43,31 @@ export default{
   },
   data () {
     return {
-      data: {
+      content: {
+        'data': [
+          {
+            'create_time': '测试4d',
+            'pid': '测试o2h',
+            'project_name': '测试2hb',
+            'star_count': 3565,
+            'uid': '测试内yqe'
+          },
+          {
+            'create_time': '测4d',
+            'pid': '测试oh',
+            'project_name': '测试hb',
+            'star_count': 355,
+            'uid': '测yqe'
+          }
+        ],
+        'msg': '测试wrs',
+        'page_num': 3643,
+        'page_size': 6177,
+        'page_total': 2704,
+        'projects_total': 8746,
+        'status': 4138
       },
-      test: '---',
+      raw: '---',
       msg: '预留44',
       status: 2323
     }
@@ -54,47 +79,20 @@ export default{
     HeaderComponent
   },
   methods: {
-    add (event) {
-      event.preventDefault()
-      this.test = {
-        description: this.data.description,
-        details: this.data.details,
-        imagePath: this.data.imagePath,
-        project_link: this.data.project_link,
-        project_name: this.data.project_name
-      }
+    pull (url) {
       var _this = this
-      axios.post('/api/projects', {
-        description: this.data.description,
-        details: this.data.details,
-        imagePath: this.data.imagePath,
-        project_link: this.data.project_link,
-        project_name: this.data.project_name
-      }).then(function (rep) {
-        _this.test = rep.data
-        // _this.data = rep.data.data
-        // _this.msg = rep.data.msg
-        // _this.status = rep.data.status
+      if (!url) url = this.post_url
+      if (!url) url = '/api2/projects/list'
+      axios.get(url).then(function (rep) {
+        _this.conent = rep.data
+        _this.raw = rep.data
       })
     },
     request (event) {
       if (event) {
         event.preventDefault()
       }
-      this.test = 'Requested'
-      var _this = this
-      axios.post('/api/projects/3', {
-        description: this.data.description,
-        details: this.data.details,
-        imagePath: this.data.imagePath,
-        project_link: this.data.project_link,
-        project_name: this.data.project_name
-      }).then(function (rep) {
-        _this.test = rep.data
-        // _this.data = rep.data.data
-        // _this.msg = rep.data.msg
-        // _this.status = rep.data.status
-      })
+      this.pull()
     }
   }
 }

@@ -4,7 +4,12 @@
 
 ## 部署策略
 设置webpack三个配置文件，完成多页面。  
-其中，首页入口单独配置，其他页面通过子目录自动抓取。  
+其中，首页入口单独配置，其他页面通过子目录自动抓取。    
+每个页面通过路由实现相近的功能，如：  
+- 添加项目、修改项目 ： modiProj.html
+- 开源项目、发布的项目、开发的项目： listProj.html  
+- ...
+
 **示例** ：  
 ```
 首页  入口文件(main.js)位于src目录
@@ -18,16 +23,11 @@
           ...
 ``` 
 
-## 多页面路由策略
-单页面应用，通过路由相互之间传递参数  
-多页面，同样通过路由？
-
-## 截图  
-npm run dev 截图  
-![基本View](./doc/screenshots/baseView.png)  
-显示模板文件结构  
-![文件结构](./doc/screenshots/fileStuc.png)   
-拆分页面部分，创建组建、布局、页面，进行拼接  
+## 已处理细节列表  
+- webpack 根据目录结构打包多页面
+- proxyTable 设置
+- 通过 hashbang 选择页面功能
+- axios 发送http请求
 
 ## 待解决问题  
 
@@ -45,14 +45,4 @@ npm run dev
 # build for production with minification
 npm run build
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
