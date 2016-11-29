@@ -6,12 +6,12 @@
         <div class="desc">
           <slot name="desc"></slot>
         </div>
-        <ul>
-          <li><span class="glyphicon glyphicon-comment"></span> <slot name='num1'></slot></li>
-          <li><span class="glyphicon glyphicon-wrench"></span> <slot name='num2'></slot></li>
-          <li><span class="glyphicon glyphicon-eye-open"></span> <slot name='num3'></slot></li>
-          <li><span class="glyphicon glyphicon-thumbs-up"></span> <slot name='num4'></slot></li>
-        </ul>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><span class="glyphicon glyphicon-comment"></span> <slot name='num1'></slot></div>
+          <div class="col-xs-6 col-sm-3"><span class="glyphicon glyphicon-wrench"></span> <slot name='num2'></slot></div>
+          <div class="col-xs-6 col-sm-3"><span class="glyphicon glyphicon-eye-open"></span> <slot name='num3'></slot></div>
+          <div class="col-xs-6 col-sm-3"><span class="glyphicon glyphicon-thumbs-up"></span> <slot name='num4'></slot></div>
+        </div>
       </div>
     </div>
 </template>

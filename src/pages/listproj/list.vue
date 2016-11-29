@@ -96,8 +96,9 @@ items h4,.items .desc p{
     z-index:9
     }
 .items ul{overflow:hidden;list-style:none}
-.items ul li{float:left;width:25%;white-space:pre;font-size:.8em;color:#555}
-.items ul li span:first-child{font-size:.6em}
+.items ul li{float:left;width:25%;white-space:pre;font-size:1em;color:#555}
+.items ul li span:first-child{font-size:.8em}
+.items ul li span:first-child::after{content: ' ';font-size:.8em;display: inline-block;width: .5em}
 </style>
 <script>
 import axios from 'axios'
