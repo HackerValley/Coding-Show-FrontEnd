@@ -9,8 +9,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <page-nav href='/pages/ModiProj.html#!/add'>添加项目</page-nav>
-        <page-nav href='#'>发布的项目</page-nav>
-        <page-nav href='#'>开发的项目</page-nav>
+        <page-nav href='/pages/ListProj.html#!/release'>发布的项目</page-nav>
+        <page-nav href='/pages/ListProj.html#!/dev'>开发的项目</page-nav>
         <page-nav href='#'>注册</page-nav>
         <page-nav href='#'>登入</page-nav>
       </ul>
