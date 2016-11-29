@@ -1,5 +1,6 @@
 /**
  * Created by songlairui on 2016/11/20.
+ * home 页面 路由未使用
  */
 export default {
   '/': 'Home',
