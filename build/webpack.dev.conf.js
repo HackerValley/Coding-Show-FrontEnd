@@ -2,6 +2,8 @@ var config = require('../config')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var utils = require('./utils')
+var glob = require('glob')
+var path = require('path')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -28,7 +30,37 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: 'body',
+      chunks: ['app', "vendor", "manifest"]
     })
   ]
 })
+
+function getEntry(globPath) {
+  var entries = {},
+    basename, tmp, pathname;
+
+  glob.sync(globPath).forEach(function (entry) {
+    basename = path.basename(entry, path.extname(entry));
+    tmp = entry.split('/').splice(-3);
+    pathname = tmp.splice(0, 1) + '/' + basename; // 正确输出js和html的路径
+    entries[pathname] = entry;
+  });
+  console.log(entries);
+  return entries;
+}
+var pages = getEntry('./src/pages/**/*.html');
+
+for (var pathname in pages) {
+  console.log("filename:" + pathname + '.html');
+  console.log("template:" + pages[pathname]);
+  var conf = {
+    filename: pathname + '.html',
+    template: pages[pathname],
+    inject: 'body',
+    chunks: [pathname, "vendor", "manifest"]
+  }
+  console.log(conf)
+
+  module.exports.plugins.push(new HtmlWebpackPlugin(conf))
+}

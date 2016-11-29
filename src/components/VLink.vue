@@ -36,6 +36,7 @@
 </script>
 
 <style scoped>
+/*Vlink.vue*/
   .active {
     color: cornflowerblue;
   }

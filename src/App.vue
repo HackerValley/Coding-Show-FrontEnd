@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style>
+/*App.vue*/
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
