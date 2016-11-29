@@ -207,6 +207,7 @@ export default{
         // 修改页面，需要拉取数据
         this.pull(this.post_url)
       }
+      document.title = this.act + '项目'
       // this.reinit()
     },
     valid (hashbang) {
@@ -250,13 +251,7 @@ export default{
     jump (event) {
       event.preventDefault()
       var url = '#!/modi/123'
-      var _this = this
-      _this.loadinit(url)
-      window.history.pushState(
-        null,
-        _this.hashbang,
-        _this.hashbang
-      )
+      this.loadinit(url)
     },
     request (event) {
       if (event) {
