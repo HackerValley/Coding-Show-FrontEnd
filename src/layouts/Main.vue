@@ -2,12 +2,12 @@
     <div class="main">
         <header-component/>
         <div>this is template body</div>
-
         <slot></slot>
         <footer-component/>
     </div>
 </template>
 <style>
+/*Main.vue*/
     body{
         background-color:#ffffff;
     }
@@ -31,8 +31,8 @@ body {
 </style>
 <script>
     require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
-    import HeaderComponent from '../layouts/header.vue'
-    import FooterComponent from '../layouts/footer.vue'
+    import HeaderComponent from '../components/header.vue'
+    import FooterComponent from '../components/other.vue'
 
     export default{
       components: {
