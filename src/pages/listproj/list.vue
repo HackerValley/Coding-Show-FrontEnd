@@ -7,34 +7,6 @@
         <hr>
       </div>
       <div class="row">
-        <div class="col-xs-6 col-sm-4 col-lg-3" >
-          <div class="items">
-            <img class='item-img' src='' alt='图片预览'>
-            <h4>原型名称</h4>
-            <p>原型的介绍</p>
-            <ul>
-              <li><span class="glyphicon glyphicon-comment"></span><span> 2222</span></li>
-              <li><span class="glyphicon glyphicon-wrench"></span><span> 111</span></li>
-              <li><span class="glyphicon glyphicon-eye-open"></span><span> 333</span></li>
-              <li><span class="glyphicon glyphicon-thumbs-up"></span><span>4 444</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-lg-3" >
-          <div class="items">
-            <div class="well">
-              {{ raw }}
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-lg-3" >
-          <div class="items">
-            <div class="well">
-            {{ status }}
-            </div>
-          </div>
-        </div>
-        <div class="clear" style="clear:both"></div>
         <ProjItem :imgurl="item.pid" v-for='item in content.data'>
           <h4 slot='title'>{{ item.project_name }}</h4>
           <p slot='desc'>由<{{ item.uid }}>于{{ item.create_time }} 发布</p>
@@ -44,7 +16,18 @@
           <span slot='num4'>4567</span>
         </ProjItem>
       </div>
-
+      <div class="row">
+        <hr><nav class="text-center">
+          <ul class="pagination pagination-lg">
+            <li class="previous disabled"><a href="#">&larr; </a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li class="next"><a href="#">&rarr;</a></li>            
+          </ul>
+      </div>
       <a v-on:click='request'>拉取</a>
     </div>
     <other-component></other-component>
@@ -67,7 +50,8 @@
     background:rgba(0,0,0,.05);
     padding:.6em;
     margin:.6em 0;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.3)
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+    border-radius:4px;
 }
 .items img{display:block;width:100%;margin: 0 auto;min-height:100px;background:skyblue}
 items h4,.items .desc{font-size:1.1em;
@@ -95,6 +79,7 @@ items h4,.items .desc p{
     bottom:0;
     z-index:9
     }
+.items .col-xs-6 {padding:0 .7em}
 .items ul{overflow:hidden;list-style:none}
 .items ul li{float:left;width:25%;white-space:pre;font-size:1em;color:#555}
 .items ul li span:first-child{font-size:.8em}
@@ -155,8 +140,14 @@ export default{
       if (!url) url = this.post_url
       if (!url) url = '/api2/projects/list'
       axios.get(url).then(function (rep) {
-        _this.conent = rep.data
-        _this.raw = rep.data
+        // _this.content.data.splice(0)
+        // console.log(rep.data.data)
+        // _this.content.data.splice(0)
+        for (let item in rep.data.data) {
+          _this.content.data.push(item)
+        }
+        // _this.content.data.(rep.data.data)
+        // _this.raw = rep.data
       })
     },
     request (event) {
