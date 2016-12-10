@@ -1,7 +1,6 @@
 <template>
     <div class="main">
         <header-component/>
-        <div>this is template body</div>
 
         <slot></slot>
         <footer-component/>
@@ -21,7 +20,7 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
+ /* position: absolute; */
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
